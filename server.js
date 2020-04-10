@@ -17,20 +17,29 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 
-     const userName = 'newuser';
+     let userName = '';
     console.log(`${userName} a user is connected`);
 
     socket.on('disconnect', function() {
-        console.log(`user${userName} disconnected`);
-        io.emit('server message', `SERVER: User with username ${userName} disconnected`)
+        console.log(`user ${userName} disconnected`);
+        io.emit('server message', `User with username ${userName} disconnected`)
     });
 
+    socket.on('new user', function(id){
+        const oldUsername = userName;
+        userName = id;
+        console.log(`${userName}`);
+        socket.emit('server message', `Your username was changed to ${userName}.`);
+        socket.broadcast.emit('server message', `User ${oldUsername} changed their name to ${userName}.`);
 
-    socket.emit('server message', `SERVER: Welcome to the chat ${userName}`);
-    socket.broadcast.emit('server message', `SERVER: User ${userName} connected.`);
+    })
+
+
+    socket.emit('server message', `Welcome to the chat pick a username`);
+    socket.broadcast.emit('server message', `User ${userName} connected.`);
 
     socket.on('chat message', function(msg){
-        io.emit('chat message', msg);
+        io.emit('chat message',`${userName}: ${msg}`);
   });
 });
 

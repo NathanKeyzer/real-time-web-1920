@@ -2,7 +2,7 @@ $(function () {
   var socket = io();
   $('form.username').submit(function(e){
           e.preventDefault(); // prevents page reloading
-          socket.emit('set user', $('#username').val());
+          socket.emit('new user', $('#username').val());
           return false;
         });
   $('form').submit(function(e){
@@ -12,6 +12,7 @@ $(function () {
     return false;
   });
 
+const name = prompt ('whats is your name?')
   socket.on('chat message', function(msg){
     $('#messages').append($('<li>').text(msg));
   });
