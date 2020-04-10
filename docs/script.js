@@ -11,8 +11,7 @@ $(function () {
     $('#m').val('');
     return false;
   });
-
-const name = prompt ('whats is your name?')
+  
   socket.on('chat message', function(msg){
     $('#messages').append($('<li>').text(msg));
   });

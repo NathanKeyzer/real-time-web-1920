@@ -16,27 +16,25 @@ app.get('/', function(req, res){
 
 
 io.on('connection', function(socket){
+    let userName = 'onbekend';
+    console.log(`${userName} is verbonden`);
 
-     let userName = '';
-    console.log(`${userName} a user is connected`);
-
-    socket.on('disconnect', function() {
-        console.log(`user ${userName} disconnected`);
-        io.emit('server message', `User with username ${userName} disconnected`)
-    });
+    socket.emit('server message', `Welkom in de chat, kies een gebruikersnaam..`);
+    socket.broadcast.emit('server message', `Gebruiker ${userName} verbonden.`);
 
     socket.on('new user', function(id){
         const oldUsername = userName;
         userName = id;
         console.log(`${userName}`);
-        socket.emit('server message', `Your username was changed to ${userName}.`);
-        socket.broadcast.emit('server message', `User ${oldUsername} changed their name to ${userName}.`);
+        socket.emit('server message', `U gebruikersnaam is veranderd in ${userName}.`);
+        socket.broadcast.emit('server message', `Gebruiker ${oldUsername} heeft zijn naam veranderd in ${userName}.`);
 
     })
 
-
-    socket.emit('server message', `Welcome to the chat pick a username`);
-    socket.broadcast.emit('server message', `User ${userName} connected.`);
+    socket.on('disconnect', function() {
+        console.log(`user ${userName} disconnected`);
+        io.emit('server message', `Gebruiker ${userName} heeft de chat verlaten`)
+    });
 
     socket.on('chat message', function(msg){
         io.emit('chat message',`${userName}: ${msg}`);

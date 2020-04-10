@@ -63,6 +63,7 @@ form button {
   color: #A9A9A8;
   padding: 50px 30px 10px 20px;
   border-bottom: solid 1px #4C4C4C;
+  position: fixed;
 }
 .chatwith p:last-of-type{
 margin-left: .5%;
@@ -86,4 +87,12 @@ margin-left: .5%;
   display: flex;
   justify-content: center;
   font-size: 1.3em;
+}
+#chatoverview{
+    height: 70rem;
+    width: auto;
+    overflow:auto;
+    overscroll-behavior-y: contain;
+    padding: 7em 1em 0 1em;
+
 }
