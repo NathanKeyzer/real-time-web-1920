@@ -6,7 +6,7 @@ During this course you will learn how to build a **meaningful** real-time applic
 ### Week 1 - Hello Server
 [live demo](https://real-time-1920.herokuapp.com/)
 iMessage chat
-![chat preview]()
+![chat preview](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/chat_preview.png)
 
 * pick a username
 * send a messages
