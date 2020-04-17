@@ -18,4 +18,5 @@ iMessage chat
 
 ### Week 2 - Concept for realtime application
 Creating a room where users with a spotify acoount can discover new or known genre's. During this period i would like to discover new music, i'm tired of my own routine. Thats why i come up with this idea to make a tag cloud from genre's. These genre's wil be extracted via the users currently played song or the recently played track.
-![DLC]()
+first version
+![DLC](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/DLC.png)
