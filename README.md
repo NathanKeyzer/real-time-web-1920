@@ -14,14 +14,9 @@ Creating a room where users with a spotify account can discover new or known gen
 
 ## Installation
 ## DLC
-<details>
-<summary>First DLC</summary>
-![DLC](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/DLC.png)
-</details>
-<details>
-<summary>Second DLC</summary>
+Second DLC
 ![DLC2](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/DLC.jpg)
-</details>
+
 
 ## External API
 For this application i'm using the [Spotify API](https://developer.spotify.com/documentation/web-api/)
