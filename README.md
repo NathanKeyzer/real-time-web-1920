@@ -20,7 +20,7 @@ Creating a room where users with a spotify account can discover new or known gen
 </details>
 <details>
 <summary>Second DLC</summary>
-![DLC2]()
+![DLC2](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/DLC.jpg)
 </details>
 
 ## External API
