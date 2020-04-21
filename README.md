@@ -15,4 +15,3 @@ Second DLC
 ## External API
 For this application i'm using the [Spotify API](https://developer.spotify.com/documentation/web-api/)
 ## Real Time Events
-### Week 2 - Concept for realtime application
