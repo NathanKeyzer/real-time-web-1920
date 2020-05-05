@@ -1,98 +1,75 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/*
+========================================================
+    GENERAL
+========================================================
+*/
+*{
+    margin: 0;
+    padding:0;
+    text-decoration: none;
 }
-body {
-  font: 13px Helvetica, Arial;
-  background-color: #1F1F22;
+body{
+    height: 100vh;
+    max-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #509BF5;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#509BF5), to(#AF2896));
+    background-image: linear-gradient(#509BF5, #AF2896);
 }
-form {
-  background: #292929;
-  padding: 3px;
-  border-top: solid 1px #4C4C4C;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 66px;
-  display: flex;
-  /* justify-content: flex-start;
-  align-items: baseline; */
+h1,h2{
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: white;
+    display: flex;
+    justify-content: center;
 }
-form.username{
-    bottom:67px;
-}
-form img{
-margin: -6px;
-margin-left: 5px;
-}
-form input {
-  border: solid 1px #979797;
-  background: #555356;
-  color: white;
-  font-size: 1em;
-  padding: 10px;
-  min-width: 8rem;
-  width: 90%;
-  height: fit-content;
-  border-radius: 20px;
-  margin-right: .5%;
-  margin-top: .6rem;
-}
-form input::placeholder{
-  color: #A9A9A8;
-}
-form button {
-  width: 10%;
-  min-width: 7rem;
-  height: fit-content;
-  background: #007AFF;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  margin-left: 20px;
-  margin-top: .6rem;
-}
-.chatwith{
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  background: #292929;
-  color: #A9A9A8;
-  padding: 50px 30px 10px 20px;
-  border-bottom: solid 1px #4C4C4C;
-  position: fixed;
-}
-.chatwith p:last-of-type{
-margin-left: .5%;
-  color: white;
-}
+h1{
 
-#messages {
-  list-style-type: none; margin: 0; padding: 0;
-  color: white;
 }
-#messages li {
-  padding: 5px 10px;
-  background: #555356;
+/*
+========================================================
+    USERS IN ROOM
+========================================================
+*/
+ul{
+    width: 20%;
+    height: 100vh;
+    background: #121212;
 }
-#messages li:nth-child(odd) {
-  background: #007AFF;
-}
-#messages li.server-message {
-  color: white;
-  background:#1F1F22;
-  display: flex;
-  justify-content: center;
-  font-size: 1.3em;
-}
-#chatoverview{
-    height: 70rem;
+/*
+========================================================
+    USERTILE
+========================================================
+*/
+.userTile{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background: #121212;
     width: auto;
-    overflow:auto;
-    overscroll-behavior-y: contain;
-    padding: 7em 1em 0 1em;
-
+    max-width: 20%;
+    height:auto;
+    padding: 1rem;
+}
+#userImage{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+p:first-of-type{
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+}
+p{
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+    font-size: .9em;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #929292;
 }

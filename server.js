@@ -4,42 +4,24 @@ const path = require ('path')
 const port = 3000
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 
+const index = require('./routes/index')
+const loginRoute =  require('./routes/login');
+const callbackRoute =  require('./routes/callback');
+const room = require('./routes/room');
 
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname,'docs')))
-
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/docs/index.html');
-});
+app.use(cookieParser());
 
 
-io.on('connection', function(socket){
-    let userName = 'onbekend';
-    console.log(`${userName} is verbonden`);
-
-    socket.emit('server message', `Welkom in de chat, kies een gebruikersnaam..`);
-    socket.broadcast.emit('server message', `Gebruiker ${userName} verbonden.`);
-
-    socket.on('new user', function(id){
-        const oldUsername = userName;
-        userName = id;
-        console.log(`${userName}`);
-        socket.emit('server message', `U gebruikersnaam is veranderd in ${userName}.`);
-        socket.broadcast.emit('server message', `Gebruiker ${oldUsername} heeft zijn naam veranderd in ${userName}.`);
-
-    })
-
-    socket.on('disconnect', function() {
-        console.log(`user ${userName} disconnected`);
-        io.emit('server message', `Gebruiker ${userName} heeft de chat verlaten`)
-    });
-
-    socket.on('chat message', function(msg){
-        io.emit('chat message',`${userName}: ${msg}`);
-  });
-});
+app.get('/', index);
+app.get('/login', loginRoute);
+app.get('/callback', callbackRoute);
+app.get('/room', room);
 
 
 http.listen(process.env.PORT || 3000);

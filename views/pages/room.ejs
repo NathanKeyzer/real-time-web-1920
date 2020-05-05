@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <%- include('./../partials/head')%>
+  </head>
+  <body>
+      <%- include('./../partials/header')%>
+      <h2><%= user %> you are logged in to spotify</h2>
+      <ul>
+          <li class="userTile">
+              <img id="userImage" src="<%= userImage %>" alt="">
+              <div>
+              <p><%= user %></p>
+              <p><%= trackName %></p>
+              <p><%= artistName %></p>
+              <p><%= artistId %></p>
+              <p><%= genre %></p>
+              </div>
+          </li>
+      </ul>
+    <%- include('./../partials/scripts')%>
+  </body>
+</html>
