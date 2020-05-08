@@ -23,7 +23,7 @@ function rooms(req, res) {
                             console.log(player.items[0].track.artists[0].id);
                             res.render('pages/room', {
                                 user: user.display_name,
-                                userImage: user.images[0].url,
+                                userImage: user.images[0] ? user.images[0].url : `https://developer.spotify.com/assets/branding-guidelines/icon4@2x.png`,
                                 trackName: player.items[0].track.name,
                                 artistName:player.items[0].track.artists[0].name,
                                 artistId:player.items[0].track.artists[0].id,
