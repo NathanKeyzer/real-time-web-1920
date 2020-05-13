@@ -23,5 +23,19 @@ app.get('/login', loginRoute);
 app.get('/callback', callbackRoute);
 app.get('/room', room);
 
+const users = [];
+io.on('connection', (socket)=>{
+    console.log('a user is connected');
+    socket.emit('add user', users)
+    socket.on('userTile', (user)=>{
+        users.push(user)
+        console.log(users);
+        socket.broadcast.emit('another user connected', user)
+    })
+
+})
+
+
+
 
 http.listen(process.env.PORT || 3000);

@@ -6,18 +6,19 @@
   <body>
       <%- include('./../partials/header')%>
       <h2><%= user %> you are logged in</h2>
-      <ul>
+      <ul id='userList'>
           <li class="userTile">
               <img id="userImage" src="<%= userImage %>" alt="">
               <div>
-              <p><%= user %></p>
-              <p><%= trackName %></p>
-              <p><%= artistName %></p>
-              <p><%= artistId %></p>
-              <p><%= genre %></p>
+              <p id='username'><%= user %></p>
+              <p id='trackname'><%= trackName %></p>
+              <p id='artistname'><%= artistName %></p>
+              <p id='artistid'><%= artistId %></p>
+              <p id='genre'><%= genre %></p>
               </div>
           </li>
       </ul>
+
     <%- include('./../partials/scripts')%>
   </body>
 </html>
