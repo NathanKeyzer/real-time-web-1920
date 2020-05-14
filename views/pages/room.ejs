@@ -4,20 +4,41 @@
       <%- include('./../partials/head')%>
   </head>
   <body>
+
       <%- include('./../partials/header')%>
-      <h2><%= user %> you are logged in</h2>
-      <ul id='userList'>
-          <li class="userTile">
-              <img id="userImage" src="<%= userImage %>" alt="">
-              <div>
-              <p id='username'><%= user %></p>
-              <p id='trackname'><%= trackName %></p>
-              <p id='artistname'><%= artistName %></p>
-              <p id='artistid'><%= artistId %></p>
-              <p id='genre'><%= genre %></p>
-              </div>
-          </li>
-      </ul>
+    <h2><%= user %> you are logged in</h2>
+      <main>
+
+          <ul id='userList'>
+              <li class="userTile">
+                  <img id="userImage" src="<%= userImage %>" alt="">
+                  <div>
+                  <p id='username'><%= user %></p>
+                  <p id='trackname'><%= trackName %></p>
+                  <p id='artistname'><%= artistName %></p>
+                  <p id='artistid'><%= artistId %></p>
+                  
+                  </div>
+              </li>
+          </ul>
+          <div id="main" class="allGenres">
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+              <p id="genre"><%= genre %></p>
+
+
+          </div>
+    </main>
 
     <%- include('./../partials/scripts')%>
   </body>

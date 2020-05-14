@@ -65,6 +65,7 @@ const genre = document.getElementById('genre')
 
 socket.on('add user', (users)=> {
 console.log(users);
+console.log(genre);
 //user object maken
 
 const user = {
@@ -73,8 +74,9 @@ const user = {
         trackname: trackname.textContent,
         artistname: artistname.textContent,
         artistid: artistid.textContent,
-        genre: genre.textcontent
+        genre: genre.textContent
     }
+    console.log(user.genre);
     console.log('add user');
     socket.emit('userTile', user)
 

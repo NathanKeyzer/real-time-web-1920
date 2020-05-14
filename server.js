@@ -27,15 +27,19 @@ const users = [];
 io.on('connection', (socket)=>{
     console.log('a user is connected');
     socket.emit('add user', users)
+    socket.broadcast.emit('add user', 'a user is connected to this room')
     socket.on('userTile', (user)=>{
         users.push(user)
         console.log(users);
+        console.log(user);
         socket.broadcast.emit('another user connected', user)
     })
+    //when a user disconnect
+    socket.on('disconnect', ()=>{
+        io.emit('add user', 'a user has left the room');
 
+    })
 })
-
-
 
 
 http.listen(process.env.PORT || 3000);
