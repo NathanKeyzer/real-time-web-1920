@@ -24,15 +24,23 @@ app.get('/callback', callbackRoute);
 app.get('/room', room);
 
 const users = [];
+const genres= [];
 io.on('connection', (socket)=>{
     console.log('a user is connected');
     socket.emit('add user', users)
+    socket.emit('add genre', genres)
+    //broadcast when a user connects
     socket.broadcast.emit('add user', 'a user is connected to this room')
+
     socket.on('userTile', (user)=>{
         users.push(user)
         console.log(users);
         console.log(user);
         socket.broadcast.emit('another user connected', user)
+    })
+    socket.on('allGenres',(userGenre)=>{
+        genres.push(userGenre)
+        socket.broadcast.emit('new genre', userGenre)
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{
