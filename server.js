@@ -32,20 +32,27 @@ io.on('connection', (socket)=>{
     //broadcast when a user connects
     socket.broadcast.emit('add user', 'a user is connected to this room')
 
+    //usertile
     socket.on('userTile', (user)=>{
-        users.push(user)
+        //username check
+        const userExists = users.some(existingUser=> existingUser.username === user.username);
+        if (userExists){
+            return
+        }
+        users.push(user);
         console.log(users);
         console.log(user);
         socket.broadcast.emit('another user connected', user)
     })
+    //show genres from users
     socket.on('allGenres',(userGenre)=>{
         genres.push(userGenre)
         socket.broadcast.emit('new genre', userGenre)
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{
+        console.log('a user is disconnected');
         io.emit('add user', 'a user has left the room');
-
     })
 })
 

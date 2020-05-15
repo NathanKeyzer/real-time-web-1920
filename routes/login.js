@@ -6,5 +6,4 @@ module.exports = (req , res, next)=>{
     const redirect_uri = encodeURIComponent(REDIRECT_URI);
     const url =`${baseUrl}&client_id=${CLIENT_ID}&scope=${scopes}&redirect_uri=${redirect_uri}`;
     res.redirect(url);
-    console.log(scopes);
 }

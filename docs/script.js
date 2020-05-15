@@ -6,15 +6,14 @@ const userimage = document.getElementById('userImage')
 const username = document.getElementById('username')
 const trackname = document.getElementById('trackname')
 const artistname = document.getElementById('artistname')
-// const artistid = document.getElementById('artistid')
 const genre = document.getElementById('genre')
 
 
+//gebruiker toevoegen
 socket.on('add user', (users)=> {
-console.log(users);
-console.log(genre);
-//user object maken
+console.log('dit zijn mijn gebruikers',users);
 
+//user object maken
 const user = {
         userimage: userimage.src,
         username: username.textContent,
@@ -22,17 +21,19 @@ const user = {
         artistname: artistname.textContent,
     }
 
-    console.log('add user');
+    // console.log('add user');
     socket.emit('userTile', user)
 })
 
+//genre toevoegen
 socket.on('add genre', (genres)=>{
+    console.log('dit is mijn genre',genres);
     const userGenre = {
             genre:genre.textContent
         }
         socket.emit('allGenres',userGenre)
 })
-
+//user from array users create tile
 socket.on('another user connected', (user)=>{
     const li = document.createElement('li')
     li.classList.add('userTile')
@@ -48,12 +49,13 @@ socket.on('another user connected', (user)=>{
 
     userList.appendChild(li)
 })
+
 socket.on('new genre', (genre)=>{
     const p = document.createElement('p')
-    p.classList.add('allGenres')
+    p.classList.add('genre')
     const markup = `
 
-        <p>${genre.genre}</p>
+        ${genre.genre}
 
     `
     p.innerHTML= markup
