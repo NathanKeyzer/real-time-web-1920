@@ -19,7 +19,6 @@ During this course you will learn how to build a **meaningful** real-time applic
 
 ## Concept
 Creating a room where users with a spotify account can discover new or known genre's. During this period i would like to discover new music, i'm tired of my own routine. Thats why i come up with this idea to make a tag cloud from genre's. These genre's wil be extracted via the users currently played song or the recently played track.
-> :warning: **This app is missing several functionalities**
 
 ## Installation
 * Clone this repository to your computer.
