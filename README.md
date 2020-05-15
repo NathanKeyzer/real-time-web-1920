@@ -33,7 +33,7 @@ To use this application you need API keys from Spotify which you can get [here](
 
 ## DLC
 ![DLC](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/DLC.jpg?raw=true)
-![DLC2](hier komt mijn tweede dlc blblablabla)
+![DLC2](https://github.com/NathanKeyzer/real-time-web-1920/blob/master/docs/img/DLC2.jpg?raw=true)
 
 ## External API
 For this application i'm using the [Spotify API](https://developer.spotify.com/documentation/web-api/)
