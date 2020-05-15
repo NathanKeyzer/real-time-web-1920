@@ -21,7 +21,7 @@ const user = {
         artistname: artistname.textContent,
     }
 
-    // console.log('add user');
+    console.log('add user');
     socket.emit('userTile', user)
 })
 

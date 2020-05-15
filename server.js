@@ -34,12 +34,10 @@ io.on('connection', (socket)=>{
 
     //usertile
     socket.on('userTile', (user)=>{
-        //username check
-        const userExists = users.some(existingUser=> existingUser.username === user.username);
-        if (userExists){
-            return
-        }
-        users.push(user);
+        //username check//stukje code may
+        //stukje code may
+        
+        users.push(user)
         console.log(users);
         console.log(user);
         socket.broadcast.emit('another user connected', user)
