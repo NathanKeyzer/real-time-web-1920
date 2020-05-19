@@ -7,6 +7,7 @@ const username = document.getElementById('username')
 const trackname = document.getElementById('trackname')
 const artistname = document.getElementById('artistname')
 const genre = document.getElementById('genre')
+const genreCollection = document.getElementById('main')
 
 
 //gebruiker toevoegen
@@ -31,6 +32,7 @@ socket.on('add genre', (genres)=>{
     const userGenre = {
             genre:genre.textContent
         }
+        console.log('hallo ik ben', userGenre);
         socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
@@ -61,6 +63,19 @@ socket.on('new genre', (genre)=>{
     p.innerHTML= markup
 
     main.appendChild(p)
+})
+// to display genre user clicked on
+genreCollection.addEventListener("click", reaction);
+function reaction(event){
+    const clickedGenre = {
+            genre:genre.textContent
+        }
+    event.preventDefault();
+    socket.emit("genre click", clickedGenre)
+    console.log("klik", clickedGenre);
+}
+socket.on ('big-announcement', (data)=>{
+    console.log("heee hallooo");
 })
 
 

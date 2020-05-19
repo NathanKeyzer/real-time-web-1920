@@ -119,6 +119,12 @@ ul{
     justify-content: center;
 
 }
+.genre{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
 .allGenres p{
     display: flex;
     flex-direction: row;
@@ -127,4 +133,9 @@ ul{
     font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
     font-size: 2em;
     color: white;
+}
+.allGenres p:hover{
+    cursor: pointer;
+    background-color: red;
+    color: black;
 }

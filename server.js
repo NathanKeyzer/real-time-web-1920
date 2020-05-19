@@ -34,9 +34,11 @@ io.on('connection', (socket)=>{
 
     //usertile
     socket.on('userTile', (user)=>{
-        //username check//stukje code may
-        //stukje code may
-        
+        //username check
+        const userExists = users.some(existingUser=> existingUser.username === user.username);
+        if (userExists){
+            return
+        }
         users.push(user)
         console.log(users);
         console.log(user);
@@ -46,6 +48,12 @@ io.on('connection', (socket)=>{
     socket.on('allGenres',(userGenre)=>{
         genres.push(userGenre)
         socket.broadcast.emit('new genre', userGenre)
+    })
+    // genre info for socket
+    socket.on('genre click',(reaction)=>{
+        // sending to all clients in 'game' room, including sender
+        io.in('game').emit('big-announcement', 'the game will start soon');
+        console.log('ik ben geklikt', reaction);
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{
