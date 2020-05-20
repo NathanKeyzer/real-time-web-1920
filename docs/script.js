@@ -54,7 +54,7 @@ socket.on('another user connected', (user)=>{
 })
 
 socket.on('new genre', (genre)=>{
-    const p = document.createElement('p id="genre"')
+    const p = document.createElement('p')
     p.classList.add('genre')
     p.setAttribute('id','genre')
     const markup = `
