@@ -54,9 +54,10 @@ socket.on('another user connected', (user)=>{
 })
 
 socket.on('new genre', (genre)=>{
+    console.log("hallo robin",genre);
     const p = document.createElement('p')
     p.classList.add('genre')
-    p.setAttribute('id','genre')
+    p.setAttribute('id',genre.genre)
     const markup = `
 
         ${genre.genre}
@@ -69,8 +70,9 @@ socket.on('new genre', (genre)=>{
 // to display genre user clicked on
 genreCollection.addEventListener("click", reaction);
 function reaction(event){
+    console.log(event);
     const clickedGenre = {
-            genre:genre.textContent,
+            genre:event.target.innerText,
             username: username.textContent
         }
     event.preventDefault();
