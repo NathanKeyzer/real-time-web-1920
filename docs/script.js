@@ -29,6 +29,7 @@ const user = {
 //genre toevoegen
 socket.on('add genre', (genres)=>{
     console.log('dit is mijn genre',genres);
+    //genre object
     const userGenre = {
             genre:genre.textContent
         }
@@ -74,8 +75,20 @@ function reaction(event){
     socket.emit("genre click", clickedGenre)
     console.log("klik", clickedGenre);
 }
-socket.on ('big-announcement', (data)=>{
-    console.log("heee hallooo");
+
+/// verbeter deze
+socket.on ('big-announcement', (reaction)=>{
+    const p = document.createElement('p')
+    p.classList.add('genreClick')
+    const markup = `
+
+        user clicked ${reaction.genre}
+
+    `
+    p.innerHTML= markup
+
+    serverMessage.appendChild(p)
+    console.log("heee hallooo", reaction);
 })
 
 
