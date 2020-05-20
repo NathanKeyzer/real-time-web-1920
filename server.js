@@ -35,19 +35,19 @@ io.on('connection', (socket)=>{
     //usertile
     socket.on('userTile', (user)=>{
         //username check
-        const userExists = users.some(existingUser=> existingUser.username === user.username);
-        if (userExists){
-            return
-        }
+        // const userExists = users.some(existingUser=> existingUser.username === user.username);
+        // if (userExists){
+        //     return
+        // }
         users.push(user)
         console.log(users);
         console.log(user);
-        socket.broadcast.emit('another user connected', user)
+        io.emit('another user connected', users)
     })
     //show genres from users
     socket.on('allGenres',(userGenre)=>{
         genres.push(userGenre)
-        socket.broadcast.emit('new genre', userGenre)
+        io.emit('new genre', userGenre)
     })
 // genre info for socket
     socket.on('genre click',(reaction)=>{

@@ -37,24 +37,29 @@ socket.on('add genre', (genres)=>{
         socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
-socket.on('another user connected', (user)=>{
-    const li = document.createElement('li')
-    li.classList.add('userTile')
-    const markup = `
-        <img id="userImage" src="${user.userimage}" alt="">
-        <div>
-        <p>${user.username}</p>
-        <p>${user.trackname}</p>
-        <p>${user.artistname}</p>
-        </div>
-    `
-    li.innerHTML= markup
+socket.on('another user connected', (users)=>{
+    userList.innerHTML = ''
+    users.map(user=>{
+        const li = document.createElement('li')
+        li.classList.add('userTile')
+        const markup = `
+            <img id="userImage" src="${user.userimage}" alt="">
+            <div>
+            <p>${user.username}</p>
+            <p>${user.trackname}</p>
+            <p>${user.artistname}</p>
+            </div>
+        `
+        li.innerHTML= markup
 
-    userList.appendChild(li)
+        userList.appendChild(li)
+    })
+
+
+
 })
 
 socket.on('new genre', (genre)=>{
-    console.log("hallo robin",genre);
     const p = document.createElement('p')
     p.classList.add('genre')
     p.setAttribute('id',genre.genre)
