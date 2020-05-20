@@ -69,7 +69,8 @@ socket.on('new genre', (genre)=>{
 genreCollection.addEventListener("click", reaction);
 function reaction(event){
     const clickedGenre = {
-            genre:genre.textContent
+            genre:genre.textContent,
+            username: username.textContent
         }
     event.preventDefault();
     socket.emit("genre click", clickedGenre)
@@ -82,7 +83,7 @@ socket.on ('big-announcement', (reaction)=>{
     p.classList.add('genreClick')
     const markup = `
 
-        user clicked ${reaction.genre}
+         ${reaction.username} clicked ${reaction.genre}
 
     `
     p.innerHTML= markup
