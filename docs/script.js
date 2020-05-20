@@ -58,7 +58,7 @@ socket.on('new genre', (genre)=>{
     p.classList.add('genre')
     const markup = `
 
-        ${genre.genre}
+        <p id="genre">${genre.genre}</p>
 
     `
     p.innerHTML= markup
