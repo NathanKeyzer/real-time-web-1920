@@ -54,11 +54,12 @@ socket.on('another user connected', (user)=>{
 })
 
 socket.on('new genre', (genre)=>{
-    const p = document.createElement('p')
+    const p = document.createElement('p id="genre"')
     p.classList.add('genre')
+    p.setAttribute('id','genre')
     const markup = `
 
-        <p id="genre">${genre.genre}</p>
+        ${genre.genre}
 
     `
     p.innerHTML= markup
