@@ -7,26 +7,30 @@
 
       <%- include('./../partials/header')%>
     <h2><%= user %> you are logged in</h2>
-      <main>
+      <main class="container">
         <div class="containerUserlist">
-          <ul id='userList'>
-              <li class="userTile">
+            <ul id='userList'>
+                <li class="userTile">
                   <img id="userImage" src="<%= userImage %>" alt="">
                   <div>
                   <p id='username'><%= user %></p>
                   <p id='trackname'><%= trackName %></p>
                   <p id='artistname'><%= artistName %></p>
                   </div>
+                </li>
+            </ul>
         </div>
-              </li>
-          </ul>
+
           <div id="main" class="allGenres">
-              <p class="genre" id="genre"><%= genre %></p>
+
+              <p class="genre" id="genre"><span><%= genre %></span></p>
 
 
           </div>
-          <div id="serverMessage">
-            <p class="genreClick" id="genreClick"></p>
+          <div id="serverMessage" class="userActivity">
+            <div class="clickScroll" id="clickScroll">
+                <p class="genreClick" id="genreClick"></p>
+            </div>
           </div>
     </main>
 

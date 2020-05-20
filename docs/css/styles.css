@@ -19,7 +19,11 @@ body{
     overflow: hidden;
 }
 main{
-    display: flex;
+}
+.container{
+    display: grid;
+    grid-template-columns: 20em auto 20em;
+
 }
 h1,h2{
     font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
@@ -30,7 +34,7 @@ h1,h2{
     justify-content: center;
 }
 h1{
-    margin-top: 1em;
+    margin-top: .7em;
 }
 /*
 ========================================================
@@ -69,7 +73,9 @@ ul{
 ========================================================
 */
 .containerUserlist{
-    width: 20%;
+    grid-column-start: 0;
+    grid-column-end: 1;
+    width: 20em;
     height: 75vh;
     background:black;
 }
@@ -117,7 +123,7 @@ ul{
     flex-wrap: wrap;
     height: fit-content;
     justify-content: center;
-
+    margin-top: 10em;
 }
 .genre{
     background: none;
@@ -129,13 +135,49 @@ ul{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 0 1em 1em 1em;
+    margin: 0 .1em .1em .1em;
     font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
     font-size: 2em;
     color: white;
+    padding-bottom: 2px;
 }
 .allGenres p:hover{
     cursor: pointer;
-    background-color: red;
-    color: black;
+    /* text-decoration: underline; */
+    color: white;
+}
+span{
+    display:inline-block;
+    padding: 2px;
+}
+span:hover{
+    display:inline-block;
+    border-bottom:2px solid white;
+}
+
+/*
+========================================================
+    USER ACTIVITY
+========================================================
+*/
+.userActivity{
+    display: grid;
+    grid-column-start: 3;
+    align-self: start;
+    height: 91vh;
+}
+.clickScroll{
+    overflow: scroll;
+    height: 19vh;
+    background: black;
+    align-self: end;
+}
+.userActivity p{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 1em 1em 1em;
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+    font-size: 1em;
+    color: #509bf5;
 }

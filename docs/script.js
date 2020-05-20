@@ -65,7 +65,7 @@ socket.on('new genre', (genre)=>{
     p.setAttribute('id',genre.genre)
     const markup = `
 
-        ${genre.genre}
+        <span>${genre.genre}</span>
 
     `
     p.innerHTML= markup
@@ -91,12 +91,13 @@ socket.on ('big-announcement', (reaction)=>{
     p.classList.add('genreClick')
     const markup = `
 
-         ${reaction.username} clicked ${reaction.genre}
+        ${reaction.username} clicked ${reaction.genre}
 
     `
     p.innerHTML= markup
 
-    serverMessage.appendChild(p)
+    clickScroll.appendChild(p)
+    clickScroll.scrollTop = clickScroll.scrollHeight
     console.log("heee hallooo", reaction);
 })
 
