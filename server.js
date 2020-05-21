@@ -47,13 +47,8 @@ io.on('connection', (socket)=>{
     })
     //show genres from users
     socket.on('allGenres',(userGenre)=>{
-        const genreExists = genres.some(all => all.genre === userGenre.genre);
-        //als userExists false is
-        if (!genreExists) {
-          genres.push(userGenre);
-        }
-        // genres.push(userGenre)
-        io.emit('new genre', genres)
+        genres.push(userGenre)
+        io.emit('new genre', userGenre)
     })
     // genre info for socket
     socket.on('genre click',(reaction)=>{
