@@ -55,7 +55,7 @@ io.on('connection', (socket)=>{
         io.emit('new genre', genres)
     })
     // genre info for socket
-    socket.on('genre click',(reaction)=>{
+    socket.on('big-announcement',(reaction)=>{
         // sending to all clients in room, including sender
         io.emit('clicked-genre', reaction)
     })

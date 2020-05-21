@@ -77,7 +77,7 @@ function reaction(event){
     socket.emit("genre click", clickedGenre)
 }
 
-socket.on ('clicked-genre', (reaction)=>{
+socket.on ('big-announcement', (reaction)=>{
     const p = document.createElement('p')
     p.classList.add('genreClick')
     const markup = `
