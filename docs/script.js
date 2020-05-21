@@ -12,29 +12,23 @@ const genreCollection = document.getElementById('main')
 
 //gebruiker toevoegen
 socket.on('add user', (users)=> {
-console.log('dit zijn mijn gebruikers',users);
-
 //user object maken
-const user = {
+    const user = {
         userimage: userimage.src,
         username: username.textContent,
         trackname: trackname.textContent,
         artistname: artistname.textContent,
     }
-
-    console.log('add user');
     socket.emit('userTile', user)
 })
 
 //genre toevoegen
 socket.on('add genre', (genres)=>{
-    console.log('dit is mijn genre',genres);
     //genre object
     const userGenre = {
             genre:genre.textContent
-        }
-        console.log('hallo ik ben', userGenre.genre);
-        socket.emit('allGenres',userGenre)
+    }
+    socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
 socket.on('another user connected', (users)=>{
@@ -51,52 +45,47 @@ socket.on('another user connected', (users)=>{
             </div>
         `
         li.innerHTML= markup
-        console.log('hier zijn mijn gebruikers',user);
-
         userList.appendChild(li)
     })
 })
 
-socket.on('new genre', (genre)=>{
-    const p = document.createElement('p')
-    p.classList.add('genre')
-    p.setAttribute('id',genre.genre)
-    const markup = `
+socket.on('new genre', (genres)=>{
+    p.innerHTML =''
+    genres.map(genre=>{
+        const p = document.createElement('p')
+        p.classList.add('genre')
+        p.setAttribute('id',genre.genre)
+        const markup = `
 
-        <span>${genre.genre}</span>
+            <span>${genre.genre}</span>
 
-    `
-    p.innerHTML= markup
+        `
+        p.innerHTML= markup
 
-    main.appendChild(p)
+        main.appendChild(p)
+    })
+
 })
 // to display genre user clicked on
 genreCollection.addEventListener("click", reaction);
 function reaction(event){
-    console.log(event);
     const clickedGenre = {
             genre:event.target.innerText,
             username: username.textContent
         }
     event.preventDefault();
     socket.emit("genre click", clickedGenre)
-    console.log("klik", clickedGenre);
 }
 
-/// verbeter deze
-socket.on ('big-announcement', (reaction)=>{
+socket.on ('clicked-genre', (reaction)=>{
     const p = document.createElement('p')
     p.classList.add('genreClick')
     const markup = `
-
         ${reaction.username} clicked ${reaction.genre}
-
     `
     p.innerHTML= markup
-
     clickScroll.appendChild(p)
     clickScroll.scrollTop = clickScroll.scrollHeight
-    console.log("heee hallooo", reaction);
 })
 
 

@@ -25,6 +25,7 @@ app.get('/room', room);
 
 const users = [];
 const genres= [];
+
 io.on('connection', (socket)=>{
     console.log('a user is connected');
     socket.emit('add user', users)
@@ -34,38 +35,32 @@ io.on('connection', (socket)=>{
 
     //usertile
     socket.on('userTile', (user)=>{
-        // console.log("hallo ik ben",user);
         //username check
         const userExists = users.some(all => all.username === user.username);
         //als userExists false is
         if (!userExists) {
           users.push(user);
         }
-        console.log("dit zijn", users);
         io.emit("another user connected", users);
-        // const userExists = users.some(existingUser=> existingUser.username[0] === user.username[0]);
-        // if (userExists){
-        //     return
-        // }
-        // users.push(user)
-        // console.log("dit zijn mijn gebruikers",users);
-        // console.log(user);
-        // io.emit('another user connected', user)
+
     })
     //show genres from users
     socket.on('allGenres',(userGenre)=>{
-        genres.push(userGenre)
-        io.emit('new genre', userGenre)
+        const genreExists = genres.some(all => all.genre === userGenre.genre);
+        //als userExists false is
+        if (!genreExists) {
+          genres.push(userGenre);
+        }
+        // genres.push(userGenre)
+        io.emit('new genre', genres)
     })
-// genre info for socket
+    // genre info for socket
     socket.on('genre click',(reaction)=>{
         // sending to all clients in room, including sender
-        io.emit('big-announcement', reaction)
-        console.log('ik ben geklikt', reaction);
+        io.emit('clicked-genre', reaction)
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{
-        console.log('a user is disconnected');
         io.emit('add user', 'a user has left the room');
     })
 })

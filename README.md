@@ -56,9 +56,11 @@ For this application i'm using the [Spotify API](https://developer.spotify.com/d
 
 - `another user connected` this let the users see other people in the room. So you can see which friend is also listening music on spotify.
 
-- `allGenres` receives the genre of the user recently played track.
+- `allGenres` Receives the genre of the user recently played track.
 
 - `new genre` This will show every user the genre which people are listening to or have recently played.
+
+- `clickedGenre` This will show every user the genre which a user clicked on.
 
 ## Code Snippets
 Add a user
@@ -77,31 +79,45 @@ Store user in array users
 ```javascript
 socket.on('userTile', (user)=>{
     //username check
-    const userExists = users.some(existingUser=> existingUser.username === user.username);
-    if (userExists){
-        return
+    const userExists = users.some(all => all.username === user.username);
+
+    if (!userExists) {
+      users.push(user);
     }
-    users.push(user);
-    socket.broadcast.emit('another user connected', user)
+    io.emit("another user connected", users);
 })
 ```
 create another user to display on client
 ```javascript
-socket.on('another user connected', (user)=>{
-    const li = document.createElement('li')
-    li.classList.add('userTile')
-    const markup = `
-        <img id="userImage" src="${user.userimage}" alt="">
-        <div>
-        <p>${user.username}</p>
-        <p>${user.trackname}</p>
-        <p>${user.artistname}</p>
-        </div>
-    `
-    li.innerHTML= markup
-
-    userList.appendChild(li)
+socket.on('another user connected', (users)=>{
+    userList.innerHTML = ''
+    users.map(user=>{
+        const li = document.createElement('li')
+        li.classList.add('userTile')
+        const markup = `
+            <img id="userImage" src="${user.userimage}" alt="">
+            <div>
+            <p>${user.username}</p>
+            <p>${user.trackname}</p>
+            <p>${user.artistname}</p>
+            </div>
+        `
+        li.innerHTML= markup
+        userList.appendChild(li)
+    })
 })
+```
+To display genre user clicked on
+```javascript
+genreCollection.addEventListener("click", reaction);
+function reaction(event){
+    const clickedGenre = {
+            genre:event.target.innerText,
+            username: username.textContent
+        }
+    event.preventDefault();
+    socket.emit("genre click", clickedGenre)
+}
 ```
 
 
