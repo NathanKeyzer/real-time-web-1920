@@ -41,6 +41,7 @@ io.on('connection', (socket)=>{
         if (!userExists) {
           users.push(user);
         }
+
         io.emit("another user connected", users);
 
     })
@@ -55,9 +56,9 @@ io.on('connection', (socket)=>{
         io.emit('new genre', genres)
     })
     // genre info for socket
-    socket.on('big-announcement',(reaction)=>{
+    socket.on('genre click',(reaction)=>{
         // sending to all clients in room, including sender
-        io.emit('clicked-genre', reaction)
+        io.emit('big-announcement', reaction)
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{

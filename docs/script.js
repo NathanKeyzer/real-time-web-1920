@@ -13,12 +13,13 @@ const genreCollection = document.getElementById('main')
 //gebruiker toevoegen
 socket.on('add user', (users)=> {
 //user object maken
-    const user = {
+const user = {
         userimage: userimage.src,
         username: username.textContent,
         trackname: trackname.textContent,
         artistname: artistname.textContent,
     }
+
     socket.emit('userTile', user)
 })
 
@@ -27,8 +28,8 @@ socket.on('add genre', (genres)=>{
     //genre object
     const userGenre = {
             genre:genre.textContent
-    }
-    socket.emit('allGenres',userGenre)
+        }
+        socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
 socket.on('another user connected', (users)=>{
@@ -45,6 +46,7 @@ socket.on('another user connected', (users)=>{
             </div>
         `
         li.innerHTML= markup
+
         userList.appendChild(li)
     })
 })
@@ -77,15 +79,20 @@ function reaction(event){
     socket.emit("genre click", clickedGenre)
 }
 
+///verbeter dit
 socket.on ('big-announcement', (reaction)=>{
     const p = document.createElement('p')
     p.classList.add('genreClick')
     const markup = `
+
         ${reaction.username} clicked ${reaction.genre}
+
     `
     p.innerHTML= markup
+
     clickScroll.appendChild(p)
     clickScroll.scrollTop = clickScroll.scrollHeight
+
 })
 
 
