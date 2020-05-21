@@ -50,10 +50,11 @@ io.on('connection', (socket)=>{
         genres.push(userGenre)
         io.emit('new genre', userGenre)
     })
-    // genre info for socket
+// genre info for socket
     socket.on('genre click',(reaction)=>{
         // sending to all clients in room, including sender
         io.emit('big-announcement', reaction)
+        console.log('ik ben geklikt', reaction);
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{

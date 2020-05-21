@@ -69,30 +69,29 @@ socket.on('new genre', (genres)=>{
 
 })
 // to display genre user clicked on
+// to display genre user clicked on
 genreCollection.addEventListener("click", reaction);
 function reaction(event){
+    console.log(event);
     const clickedGenre = {
             genre:event.target.innerText,
             username: username.textContent
         }
     event.preventDefault();
     socket.emit("genre click", clickedGenre)
+    console.log("klik", clickedGenre);
 }
-
-///verbeter dit
+/// verbeter deze
 socket.on ('big-announcement', (reaction)=>{
     const p = document.createElement('p')
     p.classList.add('genreClick')
     const markup = `
-
         ${reaction.username} clicked ${reaction.genre}
-
     `
     p.innerHTML= markup
-
     clickScroll.appendChild(p)
     clickScroll.scrollTop = clickScroll.scrollHeight
-
+    console.log("heee hallooo", reaction);
 })
 
 
