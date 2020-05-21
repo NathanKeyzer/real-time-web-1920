@@ -33,7 +33,7 @@ socket.on('add genre', (genres)=>{
     const userGenre = {
             genre:genre.textContent
         }
-        console.log('hallo ik ben', userGenre);
+        console.log('hallo ik ben', userGenre.genre);
         socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
@@ -51,12 +51,10 @@ socket.on('another user connected', (users)=>{
             </div>
         `
         li.innerHTML= markup
+        console.log('hier zijn mijn gebruikers',user);
 
         userList.appendChild(li)
     })
-
-
-
 })
 
 socket.on('new genre', (genre)=>{

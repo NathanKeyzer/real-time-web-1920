@@ -34,15 +34,23 @@ io.on('connection', (socket)=>{
 
     //usertile
     socket.on('userTile', (user)=>{
+        // console.log("hallo ik ben",user);
         //username check
-        // const userExists = users.some(existingUser=> existingUser.username === user.username);
+        const userExists = users.some(all => all.username === user.username);
+        //als userExists false is
+        if (!userExists) {
+          users.push(user);
+        }
+        console.log("dit zijn", users);
+        io.emit("another user connected", users);
+        // const userExists = users.some(existingUser=> existingUser.username[0] === user.username[0]);
         // if (userExists){
         //     return
         // }
-        users.push(user)
-        console.log(users);
-        console.log(user);
-        io.emit('another user connected', users)
+        // users.push(user)
+        // console.log("dit zijn mijn gebruikers",users);
+        // console.log(user);
+        // io.emit('another user connected', user)
     })
     //show genres from users
     socket.on('allGenres',(userGenre)=>{
