@@ -1,5 +1,4 @@
 const socket = io();
-
 ////code die werkt
 const userlist = document.getElementById('userList')
 const userimage = document.getElementById('userImage')
@@ -8,10 +7,9 @@ const trackname = document.getElementById('trackname')
 const artistname = document.getElementById('artistname')
 const genre = document.getElementById('genre')
 const genreCollection = document.getElementById('main')
-
-
 //gebruiker toevoegen
 socket.on('add user', (users)=> {
+
 //user object maken
 const user = {
         userimage: userimage.src,
@@ -22,13 +20,14 @@ const user = {
 
     socket.emit('userTile', user)
 })
-
 //genre toevoegen
 socket.on('add genre', (genres)=>{
+
     //genre object
     const userGenre = {
             genre:genre.textContent
         }
+
         socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
@@ -46,12 +45,14 @@ socket.on('another user connected', (users)=>{
             </div>
         `
         li.innerHTML= markup
+        console.log('hier zijn mijn gebruikers',user);
 
         userList.appendChild(li)
     })
+
 })
 
-socket.on('new genre', (genres)=>{
+socket.on('new genre', (genre)=>{
     p.innerHTML =''
     genres.map(genre=>{
         const p = document.createElement('p')
@@ -65,7 +66,6 @@ socket.on('new genre', (genres)=>{
         main.appendChild(p)
     })
     })
-
 // to display genre user clicked on
 genreCollection.addEventListener("click", reaction);
 function reaction(event){
@@ -88,8 +88,6 @@ socket.on ('big-announcement', (reaction)=>{
     p.innerHTML= markup
     clickScroll.appendChild(p)
     clickScroll.scrollTop = clickScroll.scrollHeight
-    console.log("heee hallooo", reaction);
+
 })
-
-
 socket.emit('disconnect')

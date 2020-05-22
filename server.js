@@ -37,17 +37,19 @@ io.on('connection', (socket)=>{
         }
 
         io.emit("another user connected", users);
-
+        // const userExists = users.some(existingUser=> existingUser.username[0] === user.username[0]);
+        // if (userExists){
+        //     return
+        // }
+        // users.push(user)
+        // console.log("dit zijn mijn gebruikers",users);
+        // console.log(user);
+        // io.emit('another user connected', user)
     })
     //show genres from users
     socket.on('allGenres',(userGenre)=>{
-        const genreExists = genres.some(all => all.genre === userGenre.genre);
-        //als userExists false is
-        if (!genreExists) {
-          genres.push(userGenre);
-        }
-        // genres.push(userGenre)
-        io.emit('new genre', genres)
+        genres.push(userGenre)
+        io.emit('new genre', userGenre)
     })
 // genre info for socket
     socket.on('genre click',(reaction)=>{
@@ -57,6 +59,7 @@ io.on('connection', (socket)=>{
     })
     //when a user disconnect
     socket.on('disconnect', ()=>{
+
         io.emit('add user', 'a user has left the room');
     })
 })
