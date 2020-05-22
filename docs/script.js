@@ -57,9 +57,9 @@ socket.on('another user connected', (users)=>{
     })
 })
 
-socket.on('new genre', (genres)=>{
+socket.on('new genre', (genre)=>{
     p.innerHTML =''
-    genres.map(genre=>{
+    userGenre.map(genre=>{
         const p = document.createElement('p')
         p.classList.add('genre')
         p.setAttribute('id',genre.genre)
