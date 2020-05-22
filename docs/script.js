@@ -88,7 +88,7 @@ socket.on ('big-announcement', (reaction)=>{
     p.innerHTML= markup
     clickScroll.appendChild(p)
     clickScroll.scrollTop = clickScroll.scrollHeight
-
+    console.log("heee hallooo", reaction);
 })
 
 
