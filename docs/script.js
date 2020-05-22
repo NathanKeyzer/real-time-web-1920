@@ -12,7 +12,7 @@ const genreCollection = document.getElementById('main')
 
 //gebruiker toevoegen
 socket.on('add user', (users)=> {
-console.log('dit zijn mijn gebruikers',users);
+
 
 //user object maken
 const user = {
@@ -22,7 +22,7 @@ const user = {
         artistname: artistname.textContent,
     }
 
-    console.log('add user');
+
     socket.emit('userTile', user)
 })
 
@@ -33,7 +33,7 @@ socket.on('add genre', (genres)=>{
     const userGenre = {
             genre:genre.textContent
         }
-        console.log('hallo ik ben', userGenre.genre);
+
         socket.emit('allGenres',userGenre)
 })
 //user from array users create tile
@@ -51,37 +51,36 @@ socket.on('another user connected', (users)=>{
             </div>
         `
         li.innerHTML= markup
-        console.log('hier zijn mijn gebruikers',user);
+
 
         userList.appendChild(li)
     })
 })
 
 socket.on('new genre', (genre)=>{
-    p.innerHTML =''
-    userGenre.map(genre=>{
-        const p = document.createElement('p')
-        p.classList.add('genre')
-        p.setAttribute('id',genre.genre)
-        const markup = `
-            <span>${genre.genre}</span>
-    `
-        p.innerHTML= markup
+    const p = document.createElement('p')
+    p.classList.add('genre')
+    p.setAttribute('id',genre.genre)
+    const markup = `
 
-        main.appendChild(p)
-    })
-    })
+        <span>${genre.genre}</span>
+
+    `
+    p.innerHTML= markup
+
+    main.appendChild(p)
+})
 // to display genre user clicked on
 genreCollection.addEventListener("click", reaction);
 function reaction(event){
-    console.log(event);
+
     const clickedGenre = {
             genre:event.target.innerText,
             username: username.textContent
         }
     event.preventDefault();
     socket.emit("genre click", clickedGenre)
-    console.log("klik", clickedGenre);
+
 }
 
 /// verbeter deze
@@ -97,7 +96,7 @@ socket.on ('big-announcement', (reaction)=>{
 
     clickScroll.appendChild(p)
     clickScroll.scrollTop = clickScroll.scrollHeight
-    console.log("heee hallooo", reaction);
+
 })
 
 

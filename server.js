@@ -49,7 +49,7 @@ io.on('connection', (socket)=>{
     //show genres from users
     socket.on('allGenres',(userGenre)=>{
         genres.push(userGenre)
-        io.emit('new genre', userGenre)
+        io.emit('new genre', genre)
     })
 // genre info for socket
     socket.on('genre click',(reaction)=>{
